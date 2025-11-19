@@ -153,7 +153,7 @@ with tab2:
         st.warning("Select at least one state for comparison.")
 
 with tab3:
-    st.header('Input vs Outcome — Impact Analysis (Hybrid ~50 lines)')
+    st.header('Input vs Outcome — Impact Analysis')
     st.caption(f"Assessing the impact of **{selected_input}** on **{selected_outcome}** for **{selected_state}**")
     impact_text = generate_impact_summary(selected_state, df, selected_input, selected_outcome, target_lines=50)
     st.markdown(impact_text)
