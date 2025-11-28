@@ -1,6 +1,7 @@
 import os
-st.write("Working directory:", os.getcwd())
 import streamlit as st
+
+st.write("Working directory:", os.getcwd())
 import pandas as pd
 import numpy as np
 import altair as alt
