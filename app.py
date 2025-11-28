@@ -1,4 +1,4 @@
-# app.py
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,11 +6,11 @@ import altair as alt
 from scipy.stats import linregress
 import warnings
 
-from modules.state_profiles import state_profiles
-from modules.long_summary import generate_long_summary
-from modules.impact_summary import generate_impact_summary
-from modules.comparison_points import generate_comparison_points
-from modules.utils import safe_corr, safe_linreg
+from long_summary import generate_long_summary
+from impact_summary import generate_impact_summary
+from comparison_points import generate_comparison_points
+from utils import safe_corr, safe_linreg
+from state_profiles import state_profiles
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
