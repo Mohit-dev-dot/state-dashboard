@@ -105,7 +105,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 ])
 
 with tab1:
-    st.header("Long State Summary")
+    st.header("Summary")
     long_summary_text = generate_long_summary(selected_state, df, selected_indicator, target_lines=50)
     st.markdown(long_summary_text)
     st.markdown("---")
