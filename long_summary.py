@@ -1,5 +1,6 @@
 import pandas as pd
-from .state_profiles import state_profiles
+from state_profiles import state_profiles
+
 import math
 
 def generate_long_summary(state, df_full, main_indicator, target_lines=50):

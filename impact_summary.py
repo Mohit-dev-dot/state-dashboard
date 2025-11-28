@@ -3,7 +3,9 @@
 
 import pandas as pd
 import numpy as np
-from .state_profiles import state_profiles
+from utils import safe_corr
+from state_profiles import state_profiles
+
 
 # ----------------- Small helpers -----------------
 

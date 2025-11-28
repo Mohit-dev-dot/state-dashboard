@@ -1,5 +1,6 @@
 import pandas as pd
-from .state_profiles import state_profiles
+from state_profiles import state_profiles
+
 
 def generate_comparison_points(state, df_full):
     """
