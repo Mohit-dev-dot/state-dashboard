@@ -10,7 +10,7 @@ def generate_long_summary(state, df_full, main_indicator, target_lines=50):
         lines = []
 
         if df_state.empty:
-            lines.append(f"# {state} — Long Summary")
+            lines.append(f"# {state} —Summary")
             lines.append("No data available for this state in the uploaded dataset.")
             return "\n".join(lines)
 
