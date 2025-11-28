@@ -226,7 +226,7 @@ with tab4:
             st.error(f"Forecasting error: {e}")
 
 with tab5:
-    st.header("📌 State Comparison Insights — Top 5 Points per Selected State")
+    st.header("📌 State Comparison Insights")
     st.caption("Concise, high-value insights that combine the dataset signals with state context.")
     for stname in all_selected_states:
         st.subheader(f"🔹 {stname}")
