@@ -1,4 +1,5 @@
-
+import os
+st.write("Working directory:", os.getcwd())
 import streamlit as st
 import pandas as pd
 import numpy as np
