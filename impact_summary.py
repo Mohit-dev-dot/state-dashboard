@@ -54,7 +54,6 @@ def _trend_word(pct):
     return "sharp decline"
 
 
-# ----------------- Indicator-specific impact blocks -----------------
 
 def _impact_literacy(state, df_state, input_indicator):
     lines = []
@@ -434,7 +433,7 @@ def _impact_unemployment(state, df_state, input_indicator):
     return lines
 
 
-# ----------------- Dispatcher -----------------
+
 
 DISPATCH = {
     "Literacy (%)": _impact_literacy,
@@ -460,7 +459,7 @@ DISPATCH = {
 }
 
 
-# ----------------- Public API used by app.py -----------------
+
 
 def generate_impact_summary(state, df_full, input_indicator, outcome_indicator, target_lines=None):
     """

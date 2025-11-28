@@ -13,15 +13,11 @@ def generate_comparison_points(state, df_full):
 
     points = []
 
-    # -------------------------------------------------------------------
-    # 1. If no data for this state → return placeholders
-    # -------------------------------------------------------------------
+    
     if df_state.empty:
         return ["No data found for this state."] * 5
 
-    # -------------------------------------------------------------------
-    # 2. Identify strongest long-term growth indicator
-    # -------------------------------------------------------------------
+   
     growths = {}
     for col in df_state.columns:
         if col not in ['State', 'Year']:
@@ -41,9 +37,7 @@ def generate_comparison_points(state, df_full):
     else:
         points.append("Growth pattern unclear — insufficient long-term data.")
 
-    # -------------------------------------------------------------------
-    # 3. Find strongest PCI driver using correlation
-    # -------------------------------------------------------------------
+
     if "Per Capita Income (₹)" in df_state.columns:
         df_num = df_state.drop(columns=['State']).apply(lambda x: pd.to_numeric(x, errors='coerce'))
         corr = df_num.corr()
@@ -59,15 +53,11 @@ def generate_comparison_points(state, df_full):
     else:
         points.append("Per-capita income data unavailable.")
 
-    # -------------------------------------------------------------------
-    # 4. Identity summary (from real-world profile)
-    # -------------------------------------------------------------------
+    
     identity_text = prof.get("summary", ["Profile not available"])[0]
     points.append(f"Identity signal: {identity_text}")
 
-    # -------------------------------------------------------------------
-    # 5. Poverty progress
-    # -------------------------------------------------------------------
+    
     if "Poverty (%)" in df_state.columns:
         pv = df_state["Poverty (%)"].dropna()
         if len(pv) >= 2:
@@ -77,9 +67,7 @@ def generate_comparison_points(state, df_full):
     else:
         points.append("Poverty data unavailable.")
 
-    # -------------------------------------------------------------------
-    # 6. Urbanization (latest)
-    # -------------------------------------------------------------------
+
     if "Urbanization (%)" in df_state.columns:
         u = df_state["Urbanization (%)"].dropna()
         if not u.empty:
