@@ -1,5 +1,5 @@
 # state-dashboard
-🚀 State Development Impact Analyzer (Pro)
+🚀 State Development Impact Analyzer
 
 A fully interactive Streamlit-based analytics dashboard that evaluates the development performance of Indian states across economic, social, and infrastructure indicators.
 The tool transforms raw state-level data into actionable insights, comparisons, and forecasting visualizations using modern data science techniques.
