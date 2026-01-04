@@ -5,4 +5,7 @@ altair
 scipy
 openpyxl
 matplotlib
+folium
+streamlit-folium
+
 
