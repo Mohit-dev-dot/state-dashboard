@@ -149,10 +149,10 @@ df_filtered = df[df["State"].isin(all_selected_states)]
 st.title("🔬 State Development Impact Analyzer")
 st.caption(f"Professional Dashboard | Analysis up to {latest_year}")
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+tab1, tab2, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "🚀 Dashboard & Summary",
     "📈 Comparative Trend",
-    "🔬 Impact Analysis",
+    # "🔬 Impact Analysis",
     "🏆 Benchmarking & Forecast",
     "📌 State Comparison Insights",
     "🥇 Leaderboard",
@@ -223,14 +223,14 @@ with tab2:
 # TAB 3 — IMPACT
 # --------------------------------------------------
 
-with tab3:
-    st.header("Input vs Outcome Impact Analysis")
+# with tab3:
+#     st.header("Input vs Outcome Impact Analysis")
 
-    text = generate_impact_summary(
-        selected_state, df, selected_input, selected_outcome, target_lines=50
-    )
+#     text = generate_impact_summary(
+#         selected_state, df, selected_input, selected_outcome, target_lines=50
+#     )
 
-    st.markdown(text)
+#     st.markdown(text)
 
 # --------------------------------------------------
 # TAB 4 — FORECAST
