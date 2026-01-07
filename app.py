@@ -18,9 +18,7 @@ from comparison_points import generate_comparison_points
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# --------------------------------------------------
-# PAGE UI CONFIG
-# --------------------------------------------------
+
 
 st.set_page_config(
     page_title="State Development Impact Analyzer (Pro)",
@@ -40,9 +38,7 @@ def apply_custom_theme():
 
 apply_custom_theme()
 
-# --------------------------------------------------
-# LOAD DATA (SQLite)
-# --------------------------------------------------
+
 
 @st.cache_data
 def load_data():
@@ -67,9 +63,7 @@ df = load_data()
 if df is None:
     st.stop()
 
-# --------------------------------------------------
-# OPTIONS
-# --------------------------------------------------
+
 
 available_states = sorted(df["State"].unique())
 available_indicators = [c for c in df.columns if c not in ["State", "Year"]]
@@ -88,9 +82,7 @@ try:
 except Exception:
     latest_year = df["Year"].max()
 
-# --------------------------------------------------
-# SIDEBAR
-# --------------------------------------------------
+
 
 st.sidebar.title("Dashboard Controls ⚙️")
 st.sidebar.markdown("---")
@@ -140,9 +132,7 @@ if st.sidebar.checkbox("Show Full Raw Data Table"):
     filtered = df[df["State"].str.contains(search, case=False, na=False)] if search else df
     st.dataframe(filtered)
 
-# --------------------------------------------------
-# MAIN VIEW
-# --------------------------------------------------
+
 
 df_filtered = df[df["State"].isin(all_selected_states)]
 
@@ -158,11 +148,7 @@ tab1, tab2, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "🥇 Leaderboard",
     "🗺️ India Map",
     "🧪 Scenario Simulator"
-])
 
-# --------------------------------------------------
-# TAB 1 — SUMMARY
-# --------------------------------------------------
 
 with tab1:
     st.header("Summary")
@@ -200,9 +186,7 @@ with tab1:
     c2.metric("Focus State", selected_state)
     c3.metric("Indicator", selected_indicator)
 
-# --------------------------------------------------
-# TAB 2 — TREND
-# --------------------------------------------------
+
 
 with tab2:
     st.header(f"Comparative Trend: {selected_indicator}")
@@ -219,9 +203,7 @@ with tab2:
     else:
         st.warning("Select at least one state.")
 
-# --------------------------------------------------
-# TAB 3 — IMPACT
-# --------------------------------------------------
+
 
 # with tab3:
 #     st.header("Input vs Outcome Impact Analysis")
@@ -276,9 +258,7 @@ with tab4:
     except Exception as e:
         st.error(str(e))
 
-# --------------------------------------------------
-# TAB 5 — INSIGHTS
-# --------------------------------------------------
+
 
 with tab5:
     st.header("📌 State Comparison Insights")
@@ -292,9 +272,6 @@ with tab5:
 
         st.markdown("---")
 
-# --------------------------------------------------
-# TAB 6 — LEADERBOARD
-# --------------------------------------------------
 
 with tab6:
     st.header("Top & Bottom 5 States")
@@ -312,9 +289,7 @@ with tab6:
     st.subheader("Bottom 5")
     st.dataframe(bottom)
 
-# --------------------------------------------------
-# TAB 7 — MAP
-# --------------------------------------------------
+
 
 with tab7:
     st.header("India Choropleth Map (Accurate Boundaries)")
@@ -347,9 +322,7 @@ with tab7:
     except Exception as e:
         st.error(f"Map error: {e}")
 
-# --------------------------------------------------
-# TAB 8 — SCENARIO SIMULATOR
-# --------------------------------------------------
+
 
 with tab8:
     st.header("What-If Scenario Simulator")
