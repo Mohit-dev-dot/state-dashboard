@@ -3,10 +3,7 @@ from state_profiles import state_profiles
 
 
 def generate_comparison_points(state, df_full):
-    """
-    Generates 5 crisp comparison insights for the given state.
-    Uses both dataset signals and state profile metadata.
-    """
+    
 
     prof = state_profiles.get(state, {})
     df_state = df_full[df_full['State'] == state].copy()
