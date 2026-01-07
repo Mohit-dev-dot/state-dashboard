@@ -7,7 +7,7 @@ from utils import safe_corr
 from state_profiles import state_profiles
 
 
-# ----------------- Small helpers -----------------
+
 
 def _first_last(df_state, col):
     """Return (first, last, pct_change) for a column in a state's time series."""
