@@ -147,7 +147,7 @@ tab1, tab2, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "📌 State Comparison Insights",
     "🥇 Leaderboard",
     "🗺️ India Map",
-    "🧪 Scenario Simulator"
+    "🧪 Scenario Simulator"])
 
 
 with tab1:
