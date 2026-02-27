@@ -13,12 +13,13 @@ from streamlit_folium import st_folium
 
 # PROJECT MODULES
 from long_summary import generate_long_summary
-from impact_summary import generate_impact_summary
 from comparison_points import generate_comparison_points
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-
+# --------------------------------------------------
+# PAGE UI CONFIG
+# --------------------------------------------------
 
 st.set_page_config(
     page_title="State Development Impact Analyzer (Pro)",
@@ -38,6 +39,8 @@ def apply_custom_theme():
 
 apply_custom_theme()
 
+
+# LOAD DATA (SQLite)
 
 
 @st.cache_data
@@ -62,7 +65,6 @@ def load_data():
 df = load_data()
 if df is None:
     st.stop()
-
 
 
 available_states = sorted(df["State"].unique())
@@ -109,20 +111,7 @@ with st.sidebar.expander("📊 Primary Indicator", expanded=True):
         index=available_indicators.index(default_indicator)
     )
 
-with st.sidebar.expander("🔬 Impact Analysis Parameters", expanded=False):
-    selected_input = st.selectbox(
-        "Input Parameter (X-axis)",
-        options=available_indicators,
-        index=available_indicators.index(default_input)
-    )
 
-    outcome_options = [col for col in available_indicators if col != selected_input]
-
-    selected_outcome = st.selectbox(
-        "Outcome Parameter (Y-axis)",
-        options=outcome_options,
-        index=outcome_options.index(default_outcome) if default_outcome in outcome_options else 0
-    )
 
 st.sidebar.markdown("---")
 
@@ -133,6 +122,8 @@ if st.sidebar.checkbox("Show Full Raw Data Table"):
     st.dataframe(filtered)
 
 
+# MAIN VIEW
+
 
 df_filtered = df[df["State"].isin(all_selected_states)]
 
@@ -142,12 +133,12 @@ st.caption(f"Professional Dashboard | Analysis up to {latest_year}")
 tab1, tab2, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "🚀 Dashboard & Summary",
     "📈 Comparative Trend",
-    # "🔬 Impact Analysis",
     "🏆 Benchmarking & Forecast",
     "📌 State Comparison Insights",
     "🥇 Leaderboard",
     "🗺️ India Map",
-    "🧪 Scenario Simulator"])
+    "🧪 Scenario Simulator"
+])
 
 
 with tab1:
@@ -187,6 +178,8 @@ with tab1:
     c3.metric("Indicator", selected_indicator)
 
 
+# TAB 2 — TREND
+
 
 with tab2:
     st.header(f"Comparative Trend: {selected_indicator}")
@@ -205,18 +198,9 @@ with tab2:
 
 
 
-# with tab3:
-#     st.header("Input vs Outcome Impact Analysis")
 
-#     text = generate_impact_summary(
-#         selected_state, df, selected_input, selected_outcome, target_lines=50
-#     )
-
-#     st.markdown(text)
-
-# --------------------------------------------------
 # TAB 4 — FORECAST
-# --------------------------------------------------
+
 
 with tab4:
     st.header("Benchmarking & Future Projection")
@@ -259,6 +243,8 @@ with tab4:
         st.error(str(e))
 
 
+# TAB 5 — INSIGHTS
+
 
 with tab5:
     st.header("📌 State Comparison Insights")
@@ -271,6 +257,9 @@ with tab5:
             st.write(f"**{i}. {p}**")
 
         st.markdown("---")
+
+
+# TAB 6 — LEADERBOARD
 
 
 with tab6:
@@ -289,6 +278,8 @@ with tab6:
     st.subheader("Bottom 5")
     st.dataframe(bottom)
 
+
+# TAB 7 — MAP
 
 
 with tab7:
@@ -322,6 +313,9 @@ with tab7:
     except Exception as e:
         st.error(f"Map error: {e}")
 
+
+
+# TAB 8 — SCENARIO SIMULATOR
 
 
 with tab8:
