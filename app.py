@@ -17,9 +17,9 @@ from comparison_points import generate_comparison_points
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# --------------------------------------------------
+
 # PAGE UI CONFIG
-# --------------------------------------------------
+
 
 st.set_page_config(
     page_title="State Development Impact Analyzer (Pro)",
